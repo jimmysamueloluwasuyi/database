@@ -1,0 +1,2 @@
+SELECT * FROM INVENTORY
+WHERE SKU, SKU_Description > 0;
