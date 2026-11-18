@@ -57,3 +57,61 @@ USE cape_codd;
 -- INNER JOIN WAREHOUSE W
 -- ON I.WarehouseID = W.WarehouseID
 -- WHERE W.Manager = 'Lucille Smith';
+
+
+
+-- 2.48
+-- SELECT WarehouseID, AVG(QuantityOnHand)
+-- FROM INVENTORY
+-- WHERE WarehouseID IN (
+-- SELECT WarehouseID
+-- FROM WAREHOUSE
+-- WHERE Manager = 'Lucille Smith'
+-- )
+-- GROUP BY WarehouseID;
+
+
+-- -- -- 2.49
+-- SELECT I.WarehouseID, AVG(I.QuantityOnHand)
+-- FROM INVENTORY I, WAREHOUSE W
+-- WHERE I.WarehouseID = W.WarehouseID
+-- AND W.Manager = 'Lucille Smith'
+-- GROUP BY I.WarehouseID;
+
+
+-- 2.50
+-- SELECT I.WarehouseID, AVG(I.QuantityOnHand)
+-- FROM INVENTORY I
+-- JOIN WAREHOUSE W ON I.WarehouseID = W.WarehouseID
+-- WHERE W.Manager = 'Lucille Smith'
+-- GROUP BY I.WarehouseID;
+
+
+-- -- 2.51
+-- SELECT W.WarehouseID, W.WarehouseCity, W.WarehouseState,
+-- W.Manager, I.SKU, I.SKU_Description, I.QuantityOnHand
+-- FROM INVENTORY I
+-- JOIN WAREHOUSE W ON I.WarehouseID = W.WarehouseID
+-- WHERE W.Manager = 'Lucille Smith';
+
+
+-- 2.52
+-- SELECT WarehouseID,
+-- SUM(QuantityOnOrder) AS TotalItemsOnOrder,
+-- SUM(QuantityOnHand) AS TotalItemsOnHand
+-- FROM INVENTORY
+-- GROUP BY WarehouseID, QuantityOnOrder;
+
+-- 2.53
+-- A subquery cannot be used when the question requires combining columns from two different tables in a single result.
+-- A subquery is mainly used to retrieve information that another SQL statement needs. A JOIN is used to combine related rows from two or more tables.
+
+-- 2.54
+-- Subquery: A query written inside another SQL query. It is used to retrieve information that the main query needs.
+-- JOIN: Combines rows from two or more tables using a related column.
+
+-- 2.55
+-- SELECT *
+-- FROM WAREHOUSE
+-- LEFT JOIN INVENTORY
+-- USING (WarehouseID);
